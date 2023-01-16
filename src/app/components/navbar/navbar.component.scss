@@ -1,0 +1,42 @@
+.navbar {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff !important;
+    .container {
+        padding-top: 60px;
+        font-family: 'Montserrat', sans-serif;
+        .navbar-brand {
+            color: #0073bd !important;
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        .navbar-nav {
+            font-size: 15px;
+            a:hover {
+                color: #C41230;
+            }
+            .nav-link {
+                color: black;
+                font-weight: bold;
+            }
+        }
+        button {
+            border-radius: 0px;
+            height: 2rem;
+            background-color: #C41230;
+            border: 0px;
+            outline: none !important;
+            box-shadow: none !important;
+            font-size: 13px;
+            font-weight: bold;
+            fa {
+                margin-left: 20px;
+            }
+        }
+
+        button:hover {
+            color: black;
+        }
+    }
+}
