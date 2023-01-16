@@ -1,0 +1,21 @@
+.container {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+    .content {
+        width: 80%;
+        text-align: center;
+        .first-section {
+            margin-top: 30px;
+        }
+        .second-section {
+            margin-top: 60px;
+        }
+        .third-section {
+            margin-top: 60px;
+        }
+    }
+
+}
