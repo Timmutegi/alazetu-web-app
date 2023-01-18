@@ -9,12 +9,58 @@
         text-align: center;
         .first-section {
             margin-top: 30px;
+            h4 {
+                color: #FF3300;
+            }
+            p {
+                font-family: 'Epilogue', sans-serif;
+                font-weight: bold;
+            }
         }
         .second-section {
             margin-top: 60px;
+            h4, h5 {
+                color: #FF3300;
+            }
+            p {
+                font-family: 'Epilogue', sans-serif;
+                font-weight: bold;
+            }
         }
         .third-section {
             margin-top: 60px;
+            h4 {
+                color: #FF3300;
+            }
+            p {
+                font-family: 'Epilogue', sans-serif;
+                font-weight: bold;
+            }
+        }
+        .fourth-section {
+            margin-top: 60px;
+            h4 {
+                color: #FF3300;
+            }
+            .row {
+                margin: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center; 
+                .card {
+                    border-radius: 0px;
+                    border: 0;
+                    button {
+                        border-radius: 0px;
+                        font-size: 16px;
+                        font-weight: bold;
+                        background-color: black;
+                        outline: none !important;
+                        box-shadow: none !important;
+                        border: 0px;
+                    }
+                }
+            }
         }
     }
 
