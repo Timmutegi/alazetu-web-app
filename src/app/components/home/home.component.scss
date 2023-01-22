@@ -61,7 +61,7 @@
 
 }
 
-@media only screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .main-section {
         display: flex;
         flex-direction: column;
@@ -69,8 +69,8 @@
         justify-content: center;
         .logo {
             img {
-                width: 300px;
-                height: 300px;
+                width: 250px;
+                height: 250px;
             }
         }
         .call-to-action {
@@ -78,13 +78,15 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding-left: 0px;
+            padding: 0px !important;
             P {
                 font-size: 30px;
                 text-align: center;
             }
             button {
-                font-size: 20px;
+                margin-top: 40px;
+                margin-bottom: 40px;
+                font-size: 20px !important;
             }
         
         }
@@ -98,15 +100,15 @@
         .intro {
             width: 100%;
             p {
-                font-size: 15px;
+                font-size: 18px !important;
             }
         }
     }
 
     .youtube-video {
         iframe {
-            width: "450";
-            height: "300"
+            width: "450" !important;
+            height: "300" !important;
         }
     }
 
