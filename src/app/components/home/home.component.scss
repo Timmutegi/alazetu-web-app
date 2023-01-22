@@ -54,14 +54,14 @@
         align-items: center;
         justify-content: center;
         iframe {
-            width: "560";
-            height: "315"
+            width: 560px;
+            height: 315px;
         }
     }
 
 }
 
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     .main-section {
         display: flex;
         flex-direction: column;
@@ -107,8 +107,8 @@
 
     .youtube-video {
         iframe {
-            width: "450" !important;
-            height: "300" !important;
+            width: 350px !important;
+            height: 200px !important;
         }
     }
 
