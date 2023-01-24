@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   isLoading!: boolean;
   fieldTextType!: boolean;
+  faRightToBracket = faRightToBracket;
 
   constructor() { }
 
