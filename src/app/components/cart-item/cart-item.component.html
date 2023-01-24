@@ -1,0 +1,44 @@
+<div class="card mb-3">
+  <div class="row">
+    <div class="col-md-2">
+      <img
+        src="/assets/images/Ngomabook.jpeg"
+        class="img-fluid rounded-start"
+        alt="..."
+      />
+    </div>
+    <div class="col-md-10">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <h5 class="card-text">
+              B-flat Ngomabook - Intermediate - 1st Edition
+            </h5>
+          </div>
+          <div class="col-sm-2 quantity">
+            <div class="form-check-inline">
+              <button class="btn btn-primary" (click)="minus()">
+                <fa-icon [icon]="faMinus"></fa-icon>
+              </button>
+            </div>
+            <div class="form-check-inline">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="inputnumber"
+              />
+            </div>
+            <div class="form-check-inline">
+              <button class="btn btn-primary" (click)="plus()">
+                <fa-icon [icon]="faPlus"></fa-icon>
+              </button>
+            </div>
+          </div>
+          <div class="col-sm-2 delete">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+.card {
+    border: 0;
+    margin-top: 30px;
+    .quantity {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+            background-color: #FF3300;
+            border: 0px;
+            border-radius: 0px;
+            outline: none !important;
+            box-shadow: none !important;
+            font-size: 13px;
+            font-weight: bold;
+        }
+    }
+    .delete {
+        fa-icon {
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        fa-icon:hover {
+            color: red;
+        }
+    }
+    .form-check-inline {
+        margin: 0;
+        input {
+            outline: none !important;
+            box-shadow: none !important;
+            border: 0;
+            padding: 0rem;
+            text-align: center;
+        }
+        input[type="text"]:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    }
+} 
