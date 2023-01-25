@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
-
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,8 @@ export class LoginComponent implements OnInit {
   isLoading!: boolean;
   fieldTextType!: boolean;
   faRightToBracket = faRightToBracket;
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
 
   constructor() { }
 
@@ -25,6 +28,10 @@ export class LoginComponent implements OnInit {
 
   get f() {
     return this.loginForm.controls;
+  }
+
+  toggle() {
+    this.fieldTextType = !this.fieldTextType;
   }
 
   login() {

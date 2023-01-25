@@ -32,7 +32,7 @@
             background-color: #e7e4f0;
         }
         .input-group-text {
-            padding: 0.23rem 0.5rem 0.23rem 0.5rem;
+            border-radius: 0;
             fa {
                 cursor: pointer;
             }
@@ -50,8 +50,8 @@
             box-shadow: none !important;
             font-size: 13px;
             font-weight: bold;
-            fa {
-                margin-left: 20px;
+            fa-icon {
+                margin-left: 10px;
             }
         }
         button:hover {
@@ -74,15 +74,8 @@
 
 
 @media only screen and (max-width: 768px) {
-    .container {
-        h1 {
-            font-size: 5.5vw;
-        }
-        h4 {
-            font-size: 3.5vw;
-        }
-        .flash {
-            max-width: 20em !important;
-        }
+    .logo {
+        visibility: hidden;
+        display: none;
     }
 }
