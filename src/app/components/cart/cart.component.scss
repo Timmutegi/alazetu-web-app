@@ -1,11 +1,27 @@
 .container {
-    min-height: 50vh;
+    min-height: 60vh;
     margin-top: 50px;
+    margin-bottom: 100px;
+    font-family: 'Montserrat', sans-serif;
+
     h3 {
         color: #FF3300;
     }
-    table {
-        width: 100%;
+    .checkout {
+        .card {
+            border-radius: 0;
+            button {
+                border-radius: 0px;
+                border: 0;
+                background-color: #FF3300;
+                outline: none !important;
+                box-shadow: none !important;
+                font-weight: bold;
+            }
+            button:hover {
+                color: black;
+            }
+        }
     }
 
 }
