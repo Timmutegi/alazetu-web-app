@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,6 +19,8 @@ export class SignUpComponent implements OnInit {
   submitted = false;
   isLoading!: boolean;
   fieldTextType!: boolean;
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
 
   constructor( ) { }
 
@@ -25,6 +29,10 @@ export class SignUpComponent implements OnInit {
 
   get f() {
     return this.signupForm.controls;
+  }
+
+  toggle() {
+    this.fieldTextType = !this.fieldTextType;
   }
 
   signup() {

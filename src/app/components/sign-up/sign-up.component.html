@@ -37,14 +37,14 @@
                         <div class="input-group">
                             <input [type]="fieldTextType? 'text' : 'password'" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors}">
                             <div class="input-group-prepend">
-                                <!-- <span class="input-group-text">
-                                    <fa *ngIf="fieldTextType" name="eye" (click)="toggle()"></fa>
-                                    <fa *ngIf="!fieldTextType" name="eye-slash" (click)="toggle()"></fa>
-                                </span> -->
+                                <span class="input-group-text">
+                                    <fa-icon *ngIf="fieldTextType" [icon]="faEye" (click)="toggle()"></fa-icon>
+                                    <fa-icon *ngIf="!fieldTextType" [icon]="faEyeSlash" (click)="toggle()"></fa-icon>
+                                </span>
                             </div>
                             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                 <div *ngIf="f.password?.invalid && (f.password?.touched || f.password?.dirty)">Password is required</div>
-                                <!-- <div *ngIf="f.password?.errors">Must be a minimum of 6 characters</div> -->
+                                <div *ngIf="f.password?.errors">Must be a minimum of 6 characters</div>
                             </div>
                         </div>
                     </div>
