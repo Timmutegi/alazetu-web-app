@@ -1,0 +1,97 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h3>Manage Profile</h3>
+    <hr>
+    <div class="profile mb-3">
+        <form [formGroup]="profileForm">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="firstname">Firstname</label>
+                    <input type="text" class="form-control" formControlName="firstname" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors}" autofocus>
+                    <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstname?.invalid && (f.firstname?.touched || f.firstname?.dirty)">Firstname is required</div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="lastname">Lastname</label>
+                    <input type="text" class="form-control" formControlName="lastname" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors}">
+                    <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastname?.invalid && (f.lastname?.touched || f.lastname?.dirty)">Lastname is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors}">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email?.invalid && (f.email?.touched || f.email?.dirty)">Valid Email is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-block" (click)="update()">UPDATE
+                            <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status"
+                                aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <h3>Reset Password</h3>
+    <hr>
+    <div class="password mb-3">
+        <form [formGroup]="resetPasswordForm">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <input [type]="fieldTextType? 'text' : 'password'" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && g.password.errors}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <fa-icon *ngIf="fieldTextType" [icon]="faEye" (click)="toggle()"></fa-icon>
+                                <fa-icon *ngIf="!fieldTextType" [icon]="faEyeSlash" (click)="toggle()"></fa-icon>
+                            </span>
+                        </div>
+                        <div *ngIf="submitted && g.password.errors" class="invalid-feedback">
+                            <div *ngIf="g.password?.invalid && (g.password?.touched || g.password?.dirty)">Password is required</div>
+                            <div *ngIf="g.password?.errors">Must be a minimum of 6 characters</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="password">New Password</label>
+                    <div class="input-group">
+                        <input [type]="fieldTextType? 'text' : 'password'" class="form-control" formControlName="newPassword" [ngClass]="{ 'is-invalid': submitted && g.newPassword.errors}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <fa-icon *ngIf="fieldTextType" [icon]="faEye" (click)="toggle()"></fa-icon>
+                                <fa-icon *ngIf="!fieldTextType" [icon]="faEyeSlash" (click)="toggle()"></fa-icon>
+                            </span>
+                        </div>
+                        <div *ngIf="submitted && g.password.errors" class="invalid-feedback">
+                            <div *ngIf="g.newPassword?.invalid && (g.newPassword?.touched || g.newPassword?.dirty)">New Password is required</div>
+                            <div *ngIf="g.newPassword?.errors">Must be a minimum of 6 characters</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-block" (click)="update()">RESET PASSWORD
+                            <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status"
+                                aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>
