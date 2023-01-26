@@ -1,44 +1,41 @@
 <div class="card mb-3">
-  <div class="row">
-    <div class="col-md-2">
-      <img
-        src="/assets/images/Ngomabook.jpeg"
-        class="img-fluid rounded-start"
-        alt="..."
-      />
-    </div>
-    <div class="col-md-10">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-8 mb-3">
-            <h5 class="card-text">
-              B-flat Ngomabook - Intermediate - 1st Edition
-            </h5>
-          </div>
-          <div class="col-sm-2 mb-3 quantity">
-            <div class="form-check-inline">
-              <button class="btn btn-primary" (click)="minus()">
-                <fa-icon [icon]="faMinus"></fa-icon>
-              </button>
-            </div>
-            <div class="form-check-inline">
-              <input
-                type="text"
-                class="form-control"
-                [(ngModel)]="inputnumber"
-              />
-            </div>
-            <div class="form-check-inline">
-              <button class="btn btn-primary" (click)="plus()">
-                <fa-icon [icon]="faPlus"></fa-icon>
-              </button>
-            </div>
-          </div>
-          <div class="col-sm-2 delete">
-            <fa-icon [icon]="faTrash"></fa-icon>
-          </div>
+    <div class="row">
+        <div class="col-md-2">
+            <img src="/assets/images/Ngomabook.jpeg" class="img-fluid rounded-start" alt="Ngomabook" />
         </div>
-      </div>
+        <div class="col-md-10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <h5 class="card-text">
+                            {{name}}
+                        </h5>
+                    </div>
+                    <div class="col-sm-2 mb-3">
+                        <h5 class="card-text">
+                            {{cost}}
+                        </h5>
+                    </div>
+                    <div class="col-sm-2 mb-3 quantity">
+                        <div class="form-check-inline">
+                            <button class="btn btn-primary" (click)="minus()">
+                                <fa-icon [icon]="faMinus"></fa-icon>
+                            </button>
+                        </div>
+                        <div class="form-check-inline">
+                            <input type="text" class="form-control" [(ngModel)]="inputnumber" />
+                        </div>
+                        <div class="form-check-inline">
+                            <button class="btn btn-primary" (click)="plus()">
+                                <fa-icon [icon]="faPlus"></fa-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 delete">
+                        <fa-icon [icon]="faTrash"></fa-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
