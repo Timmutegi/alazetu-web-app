@@ -1,5 +1,78 @@
 <app-navbar></app-navbar>
 <div class="container">
+    <div class="checkout">
+        <div class="col-md-10">
+            <h3 class="mb-3">Checkout</h3>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-5">Your Order</h5>
+                    <div class="header">
+                        <div>
+                            <p>Product</p>
+                        </div>
+                        <div>
+                            <p>Subtotal</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div *ngFor="let product of products" class="content">
+                        <div>
+                            <p>{{product.name}}</p>
+                        </div>
+                        <div>
+                            <p>{{product.cost}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="header">
+                        <div>
+                            <p>Subtotal</p>
+                        </div>
+                        <div>
+                            <p>Ksh 2,980.00</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="header">
+                        <div>
+                            <p>Shipping</p>
+                        </div>
+                        <div>
     
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="header">
+                        <div>
+                            <p>Total</p>
+                        </div>
+                        <div>
+                            <p>Ksh 2,980.00</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="payment">
+                        <p>Lipa Na MPesa</p>
+                        <div class="alert alert-secondary" role="alert">
+                            <p>You will get a pop-up on your phone asking you to confirm the payment.</p>
+                            <p>Enter your M-Pesa PIN to proceed.</p>
+                            <p>If you don’t get a pop-up on your phone call us on +254113427101 for assistance.</p>
+                        </div>
+                        <p>
+                            Your personal data will be used to process your order, support your experience throughout this website, 
+                            and for other purposes described in our <a>privacy policy.</a>
+                        </p>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-block" (click)="placeOrder()">PLACE ORDER
+                                <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status"
+                                    aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <app-footer></app-footer>

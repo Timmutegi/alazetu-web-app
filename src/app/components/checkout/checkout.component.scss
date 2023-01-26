@@ -1,3 +1,47 @@
 .container {
     min-height: 60vh;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    font-family: 'Montserrat', sans-serif;
+
+    h3 {
+        color: #FF3300;
+    }
+    .checkout {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .card {
+            border-radius: 0;
+            .header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                p {
+                    margin-bottom: 0px;
+                }
+            }
+            .content {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;    
+            }
+            .payment {
+                .alert {
+                    border-radius: 0;
+                }
+                button {
+                    margin-top: 20px;
+                    border-radius: 0px;
+                    background-color: #FF3300;
+                    border: 0px;
+                    outline: none !important;
+                    box-shadow: none !important;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
 }
