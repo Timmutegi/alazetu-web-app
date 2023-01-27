@@ -1,0 +1,68 @@
+.container {
+    min-height: 60vh;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .product {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .image {
+            img {
+                width: 400px;
+                height: 400px;
+            }
+        }
+        .details {
+            padding-left: 100px;
+            .quantity {
+                button {
+                    background-color: #FF3300;
+                    border: 0px;
+                    border-radius: 0px;
+                    outline: none !important;
+                    box-shadow: none !important;
+                    font-weight: bold;
+                }
+                .action {
+                    margin-left: 10px;
+                }
+                .form-check-inline {
+                    width: 10%;
+                    margin: 0;
+                    input {
+                        outline: none !important;
+                        box-shadow: none !important;
+                        border: 0;
+                        padding: 0rem;
+                        text-align: center;
+                    }
+                    input[type="text"]:focus {
+                        outline: none !important;
+                        box-shadow: none !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .image {
+        img {
+            width: 300px !important;
+            height: 300px !important;
+        }
+    }
+    .details {
+        padding-left: 0px !important;
+        margin: 30px;
+    }
+    .product {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

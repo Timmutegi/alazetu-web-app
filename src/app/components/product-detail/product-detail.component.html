@@ -1,1 +1,28 @@
-<p>product-detail works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="product">
+        <div class="image">
+            <img src="/assets/images/Ngomabook.jpeg" alt="Alazetu logo" />
+        </div>
+        <div class="details">
+            <h3>{{name}}</h3>
+            <h4>{{cost}}</h4>
+            <p>{{description}}</p>
+            <p>Availability: 9 in stock</p>
+            <div class="quantity">
+                <button class="btn btn-primary" (click)="minus()">
+                    <fa-icon [icon]="faMinus"></fa-icon>
+                </button>
+                <div class="form-check-inline">
+                    <input type="text" class="form-control" [(ngModel)]="inputnumber" />
+                </div>
+                <button class="btn btn-primary" (click)="plus()">
+                    <fa-icon [icon]="faPlus"></fa-icon>
+                </button>
+                <button class="btn btn-primary action">Add to Cart</button>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+<app-footer></app-footer>
