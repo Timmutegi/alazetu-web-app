@@ -2,14 +2,16 @@
 <div class="container">
     <div class="row">
         <div *ngFor="let product of products" class="col-md-4">
-            <div class="card mb-4">
-                <img src="/assets/images/Ngomabook.jpeg" alt="Alazetu logo">
-                <div class="card-body">
-                  <h6 class="card-title">{{product.name}}</h6>
-                  <p class="card-text">{{product.cost}}</p>
-                  <button class="btn btn-primary">Add to Cart</button>
+            <a routerLink="/product">
+                <div class="card mb-4">
+                    <img src="/assets/images/Ngomabook.jpeg" alt="Alazetu logo">
+                    <div class="card-body">
+                      <h6 class="card-title">{{product.name}}</h6>
+                      <p class="card-text">{{product.cost}}</p>
+                      <button class="btn btn-primary">Add to Cart</button>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>
