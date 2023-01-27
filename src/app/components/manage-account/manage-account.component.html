@@ -47,7 +47,7 @@
         <form [formGroup]="resetPasswordForm">
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <label for="password">Password</label>
+                    <label for="password">Current Password</label>
                     <div class="input-group">
                         <input [type]="fieldTextType? 'text' : 'password'" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && g.password.errors}">
                         <div class="input-group-prepend">
