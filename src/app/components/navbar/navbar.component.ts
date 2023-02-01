@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,18 +8,15 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router,) { }
+  constructor(
+    public auth: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
   }
 
   logout(): void {
-    localStorage.removeItem('google_auth');
-    this.router.navigateByUrl('/login').then();
-    // this.show_status = false;
-    // this.display_status_check = false;
-    // this.background_task_running = false;
-    // this.status = "";
+    this.auth.logout();
   }
 
 }
