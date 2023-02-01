@@ -15,8 +15,13 @@
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page" routerLink="/shop">Shop</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" routerLink="/cart">Cart</a>
+				<li class="nav-item" *ngIf="auth.fake_user.logged_in">
+					<a class="nav-link active position-relative" routerLink="/cart">
+						Cart
+						<span class="position-absolute start-100 translate-middle bg-danger">
+							{{auth.fake_user.cart}}
+						</span>
+					</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page" routerLink="/about-us">About </a>
@@ -26,17 +31,12 @@
 						Account 
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" routerLink="/login">Login</a></li>
-						<li><a class="dropdown-item" routerLink="/create-account">Sign-up</a></li>
-						<li><a class="dropdown-item" routerLink="/manage-account">Manage Account</a></li>
-						<li><a class="dropdown-item" href="#">Logout</a></li>
+						<li *ngIf="!auth.fake_user.logged_in"><a class="dropdown-item" routerLink="/login">Login</a></li>
+						<li *ngIf="!auth.fake_user.logged_in"><a class="dropdown-item" routerLink="/create-account">Sign-up</a></li>
+						<li *ngIf="auth.fake_user.logged_in"><a class="dropdown-item" routerLink="/manage-account">Manage Account</a></li>
+						<li *ngIf="auth.fake_user.logged_in"><a class="dropdown-item" (click)="logout()" routerLink="/home">Logout</a></li>
 					</ul>
 				</li>
-				<!-- <li class="nav-item">
-					<button type="button" (click)="logout()" class="btn btn-primary btn-block">
-						LOGOUT
-					</button>
-				</li> -->
 			</ul>
 		</div>
 	</div>
