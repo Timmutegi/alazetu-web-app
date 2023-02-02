@@ -9,21 +9,21 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./cart-item.component.scss'],
 })
 export class CartItemComponent {
-  inputnumber = 0;
   faPlus = faPlus;
   faMinus = faMinus;
   faTrash = faTrash;
 
   @Input() name: string = '';
-  @Input() cost: string = '';
+  @Input() cost: number = 0;
+  @Input() quantity: number = 0;
 
   plus() {
-    this.inputnumber = this.inputnumber + 1;
+    this.quantity = this.quantity + 1;
   }
 
   minus() {
-    if (this.inputnumber != 0) {
-      this.inputnumber = this.inputnumber - 1;
+    if (this.quantity != 0) {
+      this.quantity = this.quantity - 1;
     }
   }
 }
