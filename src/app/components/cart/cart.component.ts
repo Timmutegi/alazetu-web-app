@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 export interface Product {
   name: string;
   cost: string;
+  quantity: number;
 }
 
 @Component({
@@ -11,20 +12,30 @@ export interface Product {
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  totalPrice = 0;
   products = [
     {
-      "name": "B-flat Ngomabook - Intermediate - 1st Edition",
-      "cost": "Ksh 1490"
+      name: "B-flat Ngomabook - Intermediate - 1st Edition",
+      quantity: 2,
+      cost: 1490
     },
     {
-      "name": "E-flat Ngomabook - Intermediate - 1st Edition",
-      "cost": "Ksh 1490"
+      name: "E-flat Ngomabook - Intermediate - 1st Edition",
+      quantity: 3,
+      cost: 1490
     }
   ];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.calculateTotal();
+  }
+
+  calculateTotal () {
+    this.totalPrice = this.products.reduce(function (accumulator, item) {
+      return accumulator + item.quantity * item.cost;
+    }, 0);  
   }
 
 }
