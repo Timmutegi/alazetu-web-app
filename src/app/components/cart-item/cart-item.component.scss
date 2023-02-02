@@ -5,14 +5,28 @@
         display: flex;
         align-items: flex-start;
         justify-content: center;
-        button {
-            background-color: #FF3300;
-            border: 0px;
-            border-radius: 0px;
-            outline: none !important;
-            box-shadow: none !important;
-            font-size: 13px;
-            font-weight: bold;
+        .form-check-inline {
+            margin: 0;
+            button {
+                background-color: #FF3300;
+                border: 0px;
+                border-radius: 0px;
+                outline: none !important;
+                box-shadow: none !important;
+                font-size: 13px;
+                font-weight: bold;
+            }
+            input {
+                outline: none !important;
+                box-shadow: none !important;
+                border: 0;
+                padding: 0;
+                text-align: center;
+            }
+            input[type="text"]:focus {
+                outline: none !important;
+                box-shadow: none !important;
+            }
         }
     }
     .delete {
@@ -24,24 +38,14 @@
             color: red;
         }
     }
-    .form-check-inline {
-        margin: 0;
-        input {
-            outline: none !important;
-            box-shadow: none !important;
-            border: 0;
-            padding: 0rem;
-            text-align: center;
-        }
-        input[type="text"]:focus {
-            outline: none !important;
-            box-shadow: none !important;
-        }
-    }
+
 } 
 
 @media only screen and (max-width: 768px) {
     .quantity {
         width: 40%;
+    }
+    fa-icon {
+        margin-left: 0 !important;
     }
 }

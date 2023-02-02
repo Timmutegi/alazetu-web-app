@@ -6,24 +6,24 @@
         <div class="col-md-10">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-6 mb-3">
+                    <div class="col-sm-4 mb-3">
                         <h5 class="card-text">
                             {{name}}
                         </h5>
                     </div>
                     <div class="col-sm-2 mb-3">
                         <h5 class="card-text">
-                            {{cost}}
+                            Ksh {{cost}}
                         </h5>
                     </div>
-                    <div class="col-sm-2 mb-3 quantity">
+                    <div class="col-sm-4 mb-3 quantity">
                         <div class="form-check-inline">
                             <button class="btn btn-primary" (click)="minus()">
                                 <fa-icon [icon]="faMinus"></fa-icon>
                             </button>
                         </div>
                         <div class="form-check-inline">
-                            <input type="text" class="form-control" [(ngModel)]="inputnumber" />
+                            <input type="text" class="form-control" [(ngModel)]="quantity" />
                         </div>
                         <div class="form-check-inline">
                             <button class="btn btn-primary" (click)="plus()">
@@ -31,7 +31,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="col-sm-2 delete">
+                    <div class="col-sm-2 mb-3 delete">
                         <fa-icon [icon]="faTrash"></fa-icon>
                     </div>
                 </div>
