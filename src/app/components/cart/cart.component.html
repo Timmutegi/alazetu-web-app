@@ -2,14 +2,14 @@
 <div class="container">
     <h3>Shopping Cart</h3>
     <div class="row">
-        <div class="col-md-8 mb-5">
+        <div class="col-md-9 mb-5">
             <div *ngFor="let product of products">
-                <app-cart-item [name]="product.name" [cost]="product.cost" [quantity]="product.quantity"></app-cart-item>
+                <app-cart-item [id]="product.id" [name]="product.name" [cost]="product.cost" [quantity]="product.quantity" (newItemEvent)="updateProductQuantity($event)"></app-cart-item>
             </div>
             <hr>
             <h4>Subtotal: Ksh {{totalPrice}}</h4>
         </div>
-        <div class="col-md-4 checkout">
+        <div class="col-md-3 checkout">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Cart Total</h5>
