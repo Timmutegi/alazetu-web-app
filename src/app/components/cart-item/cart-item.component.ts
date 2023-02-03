@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -13,17 +13,26 @@ export class CartItemComponent {
   faMinus = faMinus;
   faTrash = faTrash;
 
+  @Input() id: number = 0;
   @Input() name: string = '';
   @Input() cost: number = 0;
   @Input() quantity: number = 0;
 
+  @Output() newItemEvent = new EventEmitter<{id: number, quantity: number}>();
+
   plus() {
     this.quantity = this.quantity + 1;
+    this.newItemEvent.emit({id: this.id, quantity: this.quantity});
   }
 
   minus() {
     if (this.quantity != 0) {
       this.quantity = this.quantity - 1;
+      this.newItemEvent.emit({id: this.id, quantity: this.quantity});
     }
+  }
+
+  removeFromCart() {
+
   }
 }
