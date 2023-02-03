@@ -18,17 +18,17 @@ export class CartItemComponent {
   @Input() cost: number = 0;
   @Input() quantity: number = 0;
 
-  @Output() newItemEvent = new EventEmitter<{id: number, quantity: number}>();
+  @Output() newQuantityEvent = new EventEmitter<{id: number, quantity: number}>();
 
   plus() {
     this.quantity = this.quantity + 1;
-    this.newItemEvent.emit({id: this.id, quantity: this.quantity});
+    this.newQuantityEvent.emit({id: this.id, quantity: this.quantity});
   }
 
   minus() {
     if (this.quantity != 0) {
       this.quantity = this.quantity - 1;
-      this.newItemEvent.emit({id: this.id, quantity: this.quantity});
+      this.newQuantityEvent.emit({id: this.id, quantity: this.quantity});
     }
   }
 
