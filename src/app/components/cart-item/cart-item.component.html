@@ -16,7 +16,7 @@
                             Ksh {{cost}}
                         </h5>
                     </div>
-                    <div class="col-sm-4 mb-3 quantity">
+                    <div class="col-sm-3 mb-3 quantity">
                         <div class="form-check-inline">
                             <button class="btn btn-primary" (click)="minus()">
                                 <fa-icon [icon]="faMinus"></fa-icon>
@@ -31,8 +31,16 @@
                             </button>
                         </div>
                     </div>
-                    <div class="col-sm-2 mb-3 delete">
-                        <fa-icon [icon]="faTrash"></fa-icon>
+                    <div class="col-sm-2 mb-3">
+                        <h5 class="card-text">
+                            Total: 
+                        </h5>
+                        <h5 class="card-text">
+                            Ksh {{cost * quantity}}
+                        </h5>
+                    </div>
+                    <div class="col-sm-1 mb-3 delete">
+                        <fa-icon [icon]="faTrash" (click)="removeFromCart()"></fa-icon>
                     </div>
                 </div>
             </div>
