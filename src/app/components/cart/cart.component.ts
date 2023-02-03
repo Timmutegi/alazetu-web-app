@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 export interface Product {
+  id: number;
   name: string;
-  cost: string;
+  cost: number;
   quantity: number;
 }
 
@@ -13,13 +14,15 @@ export interface Product {
 })
 export class CartComponent implements OnInit {
   totalPrice = 0;
-  products = [
+  products: Product[] = [
     {
+      id: 0,
       name: "B-flat Ngomabook - Intermediate - 1st Edition",
       quantity: 2,
       cost: 1490
     },
     {
+      id: 1,
       name: "E-flat Ngomabook - Intermediate - 1st Edition",
       quantity: 3,
       cost: 1490
@@ -29,6 +32,12 @@ export class CartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.calculateTotal();
+  }
+
+  updateProductQuantity(data: any) {
+    const target_product = this.products.findIndex((product => product.id == data.id));
+    this.products[target_product].quantity = data.quantity;
     this.calculateTotal();
   }
 
