@@ -13,7 +13,7 @@
                         Add to Cart
                     </button>
                     <div class="in-cart" *ngIf="product.cart">
-                        <fa-icon [icon]="faCheck" size="2x"></fa-icon>
+                        <fa-icon [icon]="faCheck" size="2x" (click)="removeFromCart()"></fa-icon>
                     </div>
                 </div>
             </div>
