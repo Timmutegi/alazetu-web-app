@@ -11,7 +11,8 @@
                         <label for="email">Email</label>
                         <input type="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors}">
                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                            <div *ngIf="f.email?.invalid && (f.email?.touched || f.email?.dirty)">Valid Email is required</div>
+                            <div *ngIf="f['email'].errors['required']">Email is required</div>
+                            <div *ngIf="f['email'].errors['email']">Valid Email is required</div>
                         </div>
                     </div>
                 </div>
@@ -27,8 +28,8 @@
                                 </span>
                             </div>
                             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                <div *ngIf="f.password?.invalid && (f.password?.touched || f.password?.dirty)">Password is required</div>
-                                <div *ngIf="f.password?.errors">Must be a minimum of 6 characters</div>
+                                <div *ngIf="f['password'].errors['required']">Password is required</div>
+                                <div *ngIf="f['password'].errors['minlength']">Must be a minimum of 6 characters</div>
                             </div>
                         </div>
                     </div>
