@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-shop',
@@ -41,13 +43,21 @@ export class ShopComponent implements OnInit {
     },
     
   ];
-cart: any;
 
-  constructor() {}
+  constructor(
+    private auth: AuthenticationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
   addToCart(): void {
+    if (!this.auth.fake_user.logged_in) {
+      this.router.navigate(['/login']);
+    }
+  }
 
+  removeFromCart() {
+    
   }
 }
