@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   faEyeSlash = faEyeSlash;
 
   constructor(
+    private router: Router,
     private auth: AuthenticationService
   ) { }
 
@@ -38,8 +40,13 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.submitted = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    console.log(this.loginForm.value);
     this.auth.login_user();
+    this.router.navigate(['/home']);
   }
-
-
 }
