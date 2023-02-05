@@ -11,14 +11,14 @@
                         <label for="firstname">Firstname</label>
                         <input type="text" class="form-control" formControlName="firstname" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors}" autofocus>
                         <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
-                            <div *ngIf="f.firstname?.invalid && (f.firstname?.touched || f.firstname?.dirty)">Firstname is required</div>
+                            <div *ngIf="f['firstname'].errors['required']">Firstname is required</div>
                         </div>
                     </div>
                     <div class="form-group mb-3">
                         <label for="lastname">Lastname</label>
                         <input type="text" class="form-control" formControlName="lastname" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors}">
                         <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
-                            <div *ngIf="f.lastname?.invalid && (f.lastname?.touched || f.lastname?.dirty)">Lastname is required</div>
+                            <div *ngIf="f['lastname'].errors['required']">Lastname is required</div>
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,8 @@
                         <label for="email">Email</label>
                         <input type="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors}">
                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                            <div *ngIf="f.email?.invalid && (f.email?.touched || f.email?.dirty)">Valid Email is required</div>
+                            <div *ngIf="f['email'].errors['required']">Email is required</div>
+                            <div *ngIf="f['email'].errors['email']">Valid Email is required</div>
                         </div>
                     </div>
                 </div>
@@ -43,8 +44,8 @@
                                 </span>
                             </div>
                             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                <div *ngIf="f.password?.invalid && (f.password?.touched || f.password?.dirty)">Password is required</div>
-                                <div *ngIf="f.password?.errors">Must be a minimum of 6 characters</div>
+                                <div *ngIf="f['password'].errors['required']">Password is required</div>
+                                <div *ngIf="f['password'].errors['minlength']">Must be a minimum of 6 characters</div>
                             </div>
                         </div>
                     </div>
@@ -55,7 +56,6 @@
                             <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status"
                                 aria-hidden="true"></span>
                         </button>
-                        <!-- <button class="btn btn-primary btn-block">Sign up with Google <fa name="google"></fa></button> -->
                     </div>
                 </div>
                 <p>Already have an account? <span routerLink="/login">Login</span></p>
