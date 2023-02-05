@@ -7,17 +7,17 @@
                 <app-cart-item [id]="product.id" [name]="product.name" [cost]="product.cost" [quantity]="product.quantity" (newQuantityEvent)="updateProductQuantity($event)"></app-cart-item>
             </div>
             <hr>
-            <h4>Subtotal: Ksh {{totalPrice}}</h4>
+            <h4>Subtotal: {{totalPrice | currency:'KES':'code'}}</h4>
         </div>
         <div class="col-md-3 checkout">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Cart Total</h5>
-                    <p class="card-text">Subtotal: Ksh {{totalPrice}}</p>
+                    <p class="card-text">Subtotal: {{totalPrice | currency:'KES':'code'}}</p>
                     <hr>
                     <p class="card-text">Shipping:</p>
                     <hr>
-                    <p class="card-text">Total: Ksh {{totalPrice}}</p>
+                    <p class="card-text">Total: {{totalPrice | currency:'KES':'code'}}</p>
                     <hr>
                     <div class="d-grid">
                         <button type="button" routerLink="/checkout" class="btn btn-primary btn-block">
