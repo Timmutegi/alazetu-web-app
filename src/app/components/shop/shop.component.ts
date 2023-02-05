@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+
+export interface Product {
+  id: number;
+  name: string;
+  cost: number;
+  quantity: number;
+}
 
 @Component({
   selector: 'app-shop',
@@ -10,38 +18,45 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class ShopComponent implements OnInit {
   faCheck = faCheck;
-  products = [
+  faXMark = faXmark;
+  cartItems: number[]  = [];
+  products: Product[] = [
     {
-      "name": "B-flat Ngomabook - Intermediate - 1st Edition",
-      "cost": "Ksh 1,490",
-      "cart": true
+      id: 0,
+      name: "B-flat Ngomabook - Intermediate - 1st Edition",
+      quantity: 2,
+      cost: 1490
     },
     {
-      "name": "E-flat Ngomabook - Intermediate - 1st Edition",
-      "cost": "Ksh 1,490",
-      "cart": false
+      id: 1,
+      name: "E-flat Ngomabook - Intermediate - 1st Edition",
+      quantity: 3,
+      cost: 1490
     },
     {
-      "name": "Guitar Ngomabook - Intermediate - 1st Edition",
-      "cost": "Ksh 1,490",
-      "cart": true
+      id: 2,
+      name: "Guitar Ngomabook - Intermediate - 1st Edition",
+      quantity: 2,
+      cost: 1490
     },
     {
-      "name": "Piano Ngomabook - Intermediate - 1st Edition",
-      "cost": "Ksh 1,490",
-      "cart": true
+      id: 3,
+      name: "Piano Ngomabook - Intermediate - 1st Edition",
+      quantity: 3,
+      cost: 1490
     },
     {
-      "name": "Violin Ngomabook - Intermediate - 1st Edition",
-      "cost": "Ksh 1,490",
-      "cart": false
+      id: 4,
+      name: "Violin Ngomabook - Intermediate - 1st Edition",
+      cost: 1490,
+      quantity: 5
     },
     {
-      "name": "Voice (Soprano, Alto) Ngomabook - Intermediate - 1st Edition",
-      "cost": "Ksh 1,490",
-      "cart": true
+      id: 5,
+      name: "Voice (Soprano, Alto) Ngomabook - Intermediate - 1st Edition",
+      cost: 1490,
+      quantity: 6
     },
-    
   ];
 
   constructor(
@@ -49,12 +64,20 @@ export class ShopComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.isLoggedIn()) {
+      this.cartItems = this.auth.fake_user.cart;
+    }
+  }
 
   addToCart(): void {
     if (!this.auth.fake_user.logged_in) {
       this.router.navigate(['/login']);
     }
+  }
+
+  isLoggedIn(): boolean {
+    return this.auth.fake_user.logged_in;
   }
 
   removeFromCart() {
