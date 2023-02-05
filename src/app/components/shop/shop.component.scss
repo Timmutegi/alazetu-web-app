@@ -29,6 +29,14 @@
                 color: #FF3300;
                 background-color: white;
             }
+            .in-cart {
+                fa-icon {
+                    margin-right: 2px;
+                }
+                fa-icon:hover {
+                    cursor: pointer;
+                }
+            }
         }
     }
 }
