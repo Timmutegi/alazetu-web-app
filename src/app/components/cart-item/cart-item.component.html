@@ -12,9 +12,9 @@
                         </h5>
                     </div>
                     <div class="col-sm-2 mb-3">
-                        <h5 class="card-text">
-                            Ksh {{cost}}
-                        </h5>
+                        <h6 class="card-text">
+                            {{cost | currency:'KES':'code'}}
+                        </h6>
                     </div>
                     <div class="col-sm-3 mb-3 quantity">
                         <div class="form-check-inline">
@@ -35,9 +35,9 @@
                         <h5 class="card-text">
                             Total: 
                         </h5>
-                        <h5 class="card-text">
-                            Ksh {{cost * quantity}}
-                        </h5>
+                        <h6 class="card-text">
+                            {{cost * quantity | currency:'KES':'code'}}
+                        </h6>
                     </div>
                     <div class="col-sm-1 mb-3 delete">
                         <fa-icon [icon]="faTrash" (click)="removeFromCart()"></fa-icon>
