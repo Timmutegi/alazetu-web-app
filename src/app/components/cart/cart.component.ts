@@ -16,16 +16,22 @@ export class CartComponent implements OnInit {
   totalPrice = 0;
   products: Product[] = [
     {
-      id: 0,
-      name: "B-flat Ngomabook - Intermediate - 1st Edition",
-      quantity: 2,
-      cost: 1490
-    },
-    {
       id: 1,
       name: "E-flat Ngomabook - Intermediate - 1st Edition",
       quantity: 3,
       cost: 1490
+    },
+    {
+      id: 3,
+      name: "Piano Ngomabook - Intermediate - 1st Edition",
+      quantity: 3,
+      cost: 1490
+    },
+    {
+      id: 5,
+      name: "Voice (Soprano, Alto) Ngomabook - Intermediate - 1st Edition",
+      cost: 1490,
+      quantity: 6
     }
   ];
 
