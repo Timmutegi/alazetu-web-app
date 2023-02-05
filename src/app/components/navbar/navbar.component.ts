@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
   faCartPlus = faCartShopping;
 
   constructor(
-    public auth: AuthenticationService
+    private auth: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -19,6 +19,14 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     this.auth.logout();
+  }
+
+  cartItems(): Number {
+    return this.auth.fake_user.cart.length;
+  }
+
+  isLoggedIn(): boolean {
+    return this.auth.fake_user.logged_in;
   }
 
 }
