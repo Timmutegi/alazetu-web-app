@@ -8,7 +8,7 @@ export class AuthenticationService {
     logged_in: false,
     firstname: "Timothy",
     lastname: "Mbaka",
-    cart: 0
+    cart: [1, 3, 5]
   }
 
   constructor() { }
@@ -18,7 +18,7 @@ export class AuthenticationService {
       logged_in: true,
       firstname: "Timothy",
       lastname: "Mbaka",
-      cart: 3
+      cart: [1, 3, 5]
     }
   }
 
@@ -27,7 +27,7 @@ export class AuthenticationService {
       logged_in: false,
       firstname: "Timothy",
       lastname: "Mbaka",
-      cart: 0
+      cart: []
     };
   }
 }
