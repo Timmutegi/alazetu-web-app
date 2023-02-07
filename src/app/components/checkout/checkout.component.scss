@@ -5,27 +5,20 @@
 
     font-family: 'Montserrat', sans-serif;
 
-    h3 {
-        color: #FF3300;
-    }
+
     .checkout {
         display: flex;
         align-items: center;
         justify-content: center;
+        h3 {
+            color: #FF3300;
+        }
         .card {
             border-radius: 0;
-            .header {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                p {
-                    margin-bottom: 0px;
+            .cart {
+                .card {
+                    border: 0;
                 }
-            }
-            .content {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;    
             }
             .payment {
                 .alert {
