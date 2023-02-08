@@ -19,6 +19,7 @@ export class CartItemComponent {
   @Input() quantity: number = 0;
 
   @Output() newQuantityEvent = new EventEmitter<{id: number, quantity: number}>();
+  @Output() removeItemEvent = new EventEmitter<{id: number}>();
 
   plus() {
     this.quantity = this.quantity + 1;
@@ -33,6 +34,7 @@ export class CartItemComponent {
   }
 
   removeFromCart() {
-
+    this.removeItemEvent.emit({id: this.id})
   }
+
 }
