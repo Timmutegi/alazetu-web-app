@@ -53,4 +53,9 @@ export class CartComponent implements OnInit {
     }, 0);  
   }
 
+  removeCartItem(data: any) {
+    this.products = this.products.filter(product => product.id != data.id);
+    this.calculateTotal();
+  }
+
 }
