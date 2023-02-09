@@ -9,11 +9,11 @@
                         <h6 class="card-title">{{product.name}}</h6>
                     </a>
                     <p class="card-text">{{product.cost}}</p>
-                    <button class="btn btn-primary" (click)="addToCart()" *ngIf="!cartItems.includes(product.id)">
+                    <button class="btn btn-primary" (click)="addToCart(product.id)" *ngIf="!cartItems.includes(product.id)">
                         Add to Cart
                     </button>
                     <div class="in-cart" *ngIf="cartItems.includes(product.id) && isLoggedIn()">
-                        <fa-icon [icon]="faCheck" size="2x" (click)="removeFromCart()"></fa-icon>
+                        <fa-icon [icon]="faCheck" size="2x" (click)="removeFromCart(product.id)"></fa-icon>
                     </div>
                 </div>
             </div>
