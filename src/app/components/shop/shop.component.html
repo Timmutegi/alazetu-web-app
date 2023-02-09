@@ -8,7 +8,7 @@
                     <a routerLink="/product">
                         <h6 class="card-title">{{product.name}}</h6>
                     </a>
-                    <p class="card-text">{{product.cost}}</p>
+                    <p class="card-text">{{product.cost | currency:'KES':'code'}}</p>
                     <button class="btn btn-primary" (click)="addToCart(product.id)" *ngIf="!cartItems.includes(product.id)">
                         Add to Cart
                     </button>
