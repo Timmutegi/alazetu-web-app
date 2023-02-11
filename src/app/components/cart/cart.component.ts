@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 export interface Product {
   id: number;
@@ -35,7 +36,9 @@ export class CartComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(
+    private auth: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
     this.calculateTotal();
@@ -56,6 +59,7 @@ export class CartComponent implements OnInit {
   removeCartItem(data: any) {
     this.products = this.products.filter(product => product.id != data.id);
     this.calculateTotal();
+    this.auth.removeItemFromCart(data.id);
   }
 
 }
