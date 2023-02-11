@@ -5,7 +5,7 @@
             <div class="card mb-4">
                 <img src="/assets/images/Ngomabook.jpeg" alt="Alazetu logo">
                 <div class="card-body">
-                    <a routerLink="/product">
+                    <a (click)="viewProductDetails(product.id)">
                         <h6 class="card-title">{{product.name}}</h6>
                     </a>
                     <p class="card-text">{{product.cost | currency:'KES':'code'}}</p>
