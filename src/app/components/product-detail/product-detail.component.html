@@ -5,21 +5,13 @@
             <img src="/assets/images/Ngomabook.jpeg" alt="Alazetu logo" />
         </div>
         <div class="details">
-            <h3>{{name}}</h3>
-            <h4>{{cost}}</h4>
+            <h3>{{selectedProduct.name}}</h3>
+            <h4>{{selectedProduct.cost | currency:'KES':'code'}}</h4>
             <p>{{description}}</p>
             <p>Availability: 9 in stock</p>
-            <div class="quantity">
-                <button class="btn btn-primary" (click)="minus()">
-                    <fa-icon [icon]="faMinus"></fa-icon>
-                </button>
-                <div class="form-check-inline">
-                    <input type="text" class="form-control" [(ngModel)]="inputnumber" />
-                </div>
-                <button class="btn btn-primary" (click)="plus()">
-                    <fa-icon [icon]="faPlus"></fa-icon>
-                </button>
-                <button class="btn btn-primary action">Add to Cart</button>
+            <button class="btn btn-primary action" (click)="addToCart(selectedProduct.id)" *ngIf="!cartItems.includes(selectedProduct.id)">Add to Cart</button>
+            <div class="in-cart" *ngIf="cartItems.includes(selectedProduct.id) && isLoggedIn()">
+                <fa-icon [icon]="faCheck" size="2x" (click)="removeFromCart(selectedProduct.id)"></fa-icon>
             </div>
         </div>
         <hr>
