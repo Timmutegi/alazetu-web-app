@@ -70,12 +70,15 @@ export class ShopComponent implements OnInit {
     }
   }
 
+  viewProductDetails(id: number): void {
+    this.router.navigate([`product/${id}`]);
+  }
+
   addToCart(id: number): void {
     if (!this.auth.fake_user.logged_in) {
       this.router.navigate(['/login']);
     }
-    this.cartItems.push(id);
-    this.auth.fake_user.cart.push(id);
+    this.auth.addItemToCart(id);
   }
 
   isLoggedIn(): boolean {
@@ -83,7 +86,6 @@ export class ShopComponent implements OnInit {
   }
 
   removeFromCart(id: number) {
-    this.cartItems = this.cartItems.filter(item => item != id);
-    this.auth.fake_user.cart = this.auth.fake_user.cart.filter(item => item != id);
+    this.auth.removeItemFromCart(id);
   }
 }
