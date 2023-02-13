@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,21 +11,24 @@ import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  signupForm = new FormGroup({
-    firstname: new FormControl('', Validators.required),
-    lastname: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
-  });
+  signupForm!: FormGroup;
   submitted = false;
   isLoading!: boolean;
   fieldTextType!: boolean;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
 
-  constructor( ) { }
+  constructor( 
+    private api: ApiService
+  ) { }
 
   ngOnInit(): void {
+    this.signupForm = new FormGroup({
+      firstname: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    });
   }
 
   get f() {
@@ -40,6 +44,12 @@ export class SignUpComponent implements OnInit {
     if (this.signupForm.invalid) {
       return;
     }
+
+    this.api.post('/users', this.signupForm.value).subscribe(
+      res => {
+        console.log(res);
+      }
+    )
   }
 
 }
