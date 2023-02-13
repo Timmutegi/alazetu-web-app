@@ -21,6 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ManageAccountComponent } from './components/manage-account/manage-account.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     MatTableModule,
     BrowserAnimationsModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
