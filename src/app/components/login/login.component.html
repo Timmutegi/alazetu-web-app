@@ -9,8 +9,8 @@
                 <div class="form-row">
                     <div class="form-group mb-4">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors}">
-                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <input type="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors}">
+                        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
                             <div *ngIf="f['email'].errors['required']">Email is required</div>
                             <div *ngIf="f['email'].errors['email']">Valid Email is required</div>
                         </div>
@@ -20,14 +20,14 @@
                     <div class="form-group">
                         <label for="password">Password</label>
                         <div class="input-group">
-                            <input [type]="fieldTextType? 'text' : 'password'" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors}">
+                            <input [type]="fieldTextType? 'text' : 'password'" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors}">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <fa-icon *ngIf="fieldTextType" [icon]="faEye" (click)="toggle()"></fa-icon>
                                     <fa-icon *ngIf="!fieldTextType" [icon]="faEyeSlash" (click)="toggle()"></fa-icon>
                                 </span>
                             </div>
-                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
                                 <div *ngIf="f['password'].errors['required']">Password is required</div>
                                 <div *ngIf="f['password'].errors['minlength']">Must be a minimum of 6 characters</div>
                             </div>
