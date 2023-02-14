@@ -3,13 +3,7 @@ import { Router } from '@angular/router';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-
-export interface Product {
-  id: number;
-  name: string;
-  cost: number;
-  quantity: number;
-}
+import { Product } from 'src/app/shared/product';
 
 @Component({
   selector: 'app-shop',
