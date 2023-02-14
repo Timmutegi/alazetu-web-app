@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-
-export interface Product {
-  id: number;
-  name: string;
-  cost: number;
-  quantity: number;
-}
+import { Product } from 'src/app/shared/product';
 
 @Component({
   selector: 'app-cart',
