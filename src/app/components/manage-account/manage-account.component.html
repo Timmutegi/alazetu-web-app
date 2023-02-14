@@ -7,32 +7,33 @@
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <label for="firstname">Firstname</label>
-                    <input type="text" class="form-control" formControlName="firstname" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors}" autofocus>
-                    <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
-                        <div *ngIf="f.firstname?.invalid && (f.firstname?.touched || f.firstname?.dirty)">Firstname is required</div>
+                    <input type="text" class="form-control" formControlName="firstname" [ngClass]="{ 'is-invalid': profileFormSubmitted && f['firstname'].errors}" autofocus>
+                    <div *ngIf="profileFormSubmitted && f['firstname'].errors" class="invalid-feedback">
+                        <div *ngIf="f['firstname'].errors['required']">Firstname is required</div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="lastname">Lastname</label>
-                    <input type="text" class="form-control" formControlName="lastname" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors}">
-                    <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
-                        <div *ngIf="f.lastname?.invalid && (f.lastname?.touched || f.lastname?.dirty)">Lastname is required</div>
+                    <input type="text" class="form-control" formControlName="lastname" [ngClass]="{ 'is-invalid': profileFormSubmitted && f['lastname'].errors}">
+                    <div *ngIf="profileFormSubmitted && f['lastname'].errors" class="invalid-feedback">
+                        <div *ngIf="f['lastname'].errors['required']">Lastname is required</div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors}">
-                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.email?.invalid && (f.email?.touched || f.email?.dirty)">Valid Email is required</div>
+                    <input type="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': profileFormSubmitted && f['email'].errors}">
+                    <div *ngIf="profileFormSubmitted && f['email'].errors" class="invalid-feedback">
+                        <div *ngIf="f['email'].errors['required']">Email is required</div>
+                        <div *ngIf="f['email'].errors['email']">Valid Email is required</div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary btn-block" (click)="update()">UPDATE
+                        <button type="submit" class="btn btn-primary btn-block" (click)="updateProfile()">UPDATE
                             <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status"
                                 aria-hidden="true"></span>
                         </button>
@@ -49,16 +50,16 @@
                 <div class="col-md-4 mb-3">
                     <label for="password">Current Password</label>
                     <div class="input-group">
-                        <input [type]="fieldTextType? 'text' : 'password'" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && g.password.errors}">
+                        <input [type]="fieldTextType? 'text' : 'password'" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && g['password'].errors}">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
                                 <fa-icon *ngIf="fieldTextType" [icon]="faEye" (click)="toggle()"></fa-icon>
                                 <fa-icon *ngIf="!fieldTextType" [icon]="faEyeSlash" (click)="toggle()"></fa-icon>
                             </span>
                         </div>
-                        <div *ngIf="submitted && g.password.errors" class="invalid-feedback">
-                            <div *ngIf="g.password?.invalid && (g.password?.touched || g.password?.dirty)">Password is required</div>
-                            <div *ngIf="g.password?.errors">Must be a minimum of 6 characters</div>
+                        <div *ngIf="submitted && g['password'].errors" class="invalid-feedback">
+                            <div *ngIf="g['password'].errors['required']">Password is required</div>
+                            <div *ngIf="g['password'].errors['minlength']">Must be a minimum of 6 characters</div>
                         </div>
                     </div>
                 </div>
@@ -67,16 +68,16 @@
                 <div class="col-md-4 mb-3">
                     <label for="password">New Password</label>
                     <div class="input-group">
-                        <input [type]="fieldTextType? 'text' : 'password'" class="form-control" formControlName="newPassword" [ngClass]="{ 'is-invalid': submitted && g.newPassword.errors}">
+                        <input [type]="fieldTextType? 'text' : 'password'" class="form-control" formControlName="newPassword" [ngClass]="{ 'is-invalid': submitted && g['newPassword'].errors}">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
                                 <fa-icon *ngIf="fieldTextType" [icon]="faEye" (click)="toggle()"></fa-icon>
                                 <fa-icon *ngIf="!fieldTextType" [icon]="faEyeSlash" (click)="toggle()"></fa-icon>
                             </span>
                         </div>
-                        <div *ngIf="submitted && g.password.errors" class="invalid-feedback">
-                            <div *ngIf="g.newPassword?.invalid && (g.newPassword?.touched || g.newPassword?.dirty)">New Password is required</div>
-                            <div *ngIf="g.newPassword?.errors">Must be a minimum of 6 characters</div>
+                        <div *ngIf="submitted && g['newPassword'].errors" class="invalid-feedback">
+                            <div *ngIf="g['newPassword'].errors['required']"> New password is required</div>
+                            <div *ngIf="g['newPassword'].errors['minlength']">Must be a minimum of 6 characters</div>
                         </div>
                     </div>
                 </div>
@@ -84,7 +85,7 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary btn-block" (click)="update()">RESET PASSWORD
+                        <button type="submit" class="btn btn-primary btn-block" (click)="resetPassword()">RESET PASSWORD
                             <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status"
                                 aria-hidden="true"></span>
                         </button>

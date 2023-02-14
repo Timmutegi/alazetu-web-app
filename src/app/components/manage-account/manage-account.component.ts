@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,26 +9,28 @@ import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./manage-account.component.scss']
 })
 export class ManageAccountComponent {
-  profileForm = new FormGroup({
-    firstname: new FormControl('', Validators.required),
-    lastname: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-  });
-
-  resetPasswordForm = new FormGroup({
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    newPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
-  });
-
+  profileForm!: FormGroup;
+  resetPasswordForm!: FormGroup;
   submitted = false;
   isLoading!: boolean;
   fieldTextType!: boolean;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
+  profileFormSubmitted = false;
 
   constructor( ) { }
 
   ngOnInit(): void {
+    this.profileForm = new FormGroup({
+      firstname: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+    });
+  
+    this.resetPasswordForm = new FormGroup({
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      newPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
+    });
   }
 
   get f() {
@@ -44,7 +45,21 @@ export class ManageAccountComponent {
     this.fieldTextType = !this.fieldTextType;
   }
 
-  update() {
+  updateProfile() {
+    this.profileFormSubmitted = true;
+    if (this.profileForm.invalid) {
+      return;
+    }
 
+    console.log(this.profileForm.value);
+  }
+
+  resetPassword() {
+    this.submitted = true;
+    if (this.resetPasswordForm.invalid) {
+      return;
+    }
+
+    console.log(this.resetPasswordForm.value);
   }
 }
