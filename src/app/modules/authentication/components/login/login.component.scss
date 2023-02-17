@@ -1,0 +1,81 @@
+.container {
+    font-family: 'Montserrat', sans-serif;
+    .row {
+        margin-top: 50px;
+    }
+    .logo {
+        img {
+            width: 400px;
+            height: 400px;
+        }
+    }
+
+    form {
+        label {
+            color: black;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        input {
+            border-radius: 0px;
+            font-size: 13px;
+            border: 2px solid black;
+        }
+        input[type="email"],
+        input[type="password"] {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            background-color: #e7e4f0;
+        }
+        .input-group-text {
+            border-radius: 0;
+            fa {
+                cursor: pointer;
+            }
+        }
+        .invalid-feedback {
+            font-size: 11px;
+        }
+        button {
+            margin-top: 20px;
+            border-radius: 0px;
+            height: 2rem;
+            background-color: #FF3300;
+            border: 0px;
+            outline: none !important;
+            box-shadow: none !important;
+            font-size: 13px;
+            font-weight: bold;
+            fa-icon {
+                margin-left: 10px;
+            }
+        }
+        button:hover {
+            color: black;
+        }
+        p {
+            color: #FF3300;
+            font-size: 13px;
+            margin-top: 20px;
+            span {
+                cursor: pointer;
+                color: blue;
+            }
+            span:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .logo {
+        visibility: hidden;
+        display: none;
+    }
+}
