@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { User } from '../modules/shared/user';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,50 +9,48 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthenticationService {
   private cartTotalSubject = new BehaviorSubject<number>(0);
   cartTotal$ = this.cartTotalSubject.asObservable();
-  fake_user = {
-    logged_in: false,
-    firstname: "Timothy",
-    lastname: "Mbaka",
-    cart: [1, 3, 5]
-  }
+  user!: User | null;
 
-  constructor() { }
+  constructor(
+    private api: ApiService
+  ) { }
 
   login_user() {
-    this.fake_user = {
-      logged_in: true,
-      firstname: "Timothy",
-      lastname: "Mbaka",
-      cart: [1, 3, 5]
+    this.api.getwithAuth('/users/me', ).subscribe(
+      res => {
+        if (res) {
+          this.user = res;
+          this.updateCartTotalCount();
+        }
+      }
+    )
+  }
+
+  logout() {
+    this.user = null
+  }
+
+  addItemToCart(id: string) {
+    if (this.user) {
+      this.user.cartItems.push(id);
     }
     this.updateCartTotalCount();
   }
 
-  logout() {
-    this.fake_user = {
-      logged_in: false,
-      firstname: "Timothy",
-      lastname: "Mbaka",
-      cart: []
-    };
-  }
-
-  addItemToCart(id: number) {
-    this.fake_user.cart.push(id);
-    this.updateCartTotalCount();
-  }
-
-  removeItemFromCart(id: number) {
-    const index = this.fake_user.cart.indexOf(id);
-    if (index > -1) {
-      this.fake_user.cart.splice(index, 1);
+  removeItemFromCart(id: string) {
+    if (this.user) {
+      const index = this.user.cartItems.indexOf(id);
+      if (index > -1) {
+        this.user.cartItems.splice(index, 1);
+      }
     }
     this.updateCartTotalCount();
   }
 
   updateCartTotalCount() {
-    let total = this.fake_user.cart.length;
-    this.cartTotalSubject.next(total);
+    if (this.user) {
+      let total = this.user.cartItems.length;
+      this.cartTotalSubject.next(total);
+    }
   }
-
 }

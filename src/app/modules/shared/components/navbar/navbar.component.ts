@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
   }
 
   isLoggedIn(): boolean {
-    return this.auth.fake_user.logged_in;
+    return this.auth.user != null;
   }
 
 }
