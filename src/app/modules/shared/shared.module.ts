@@ -4,11 +4,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedRoutingModule } from './shared-routing.module';
 import { LoaderComponent } from './components/loader/loader.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    LoaderComponent
+    LoaderComponent,
+    PageNotFoundComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +22,8 @@ import { LoaderComponent } from './components/loader/loader.component';
   exports: [
     NavbarComponent,
     FontAwesomeModule,
-    LoaderComponent
+    LoaderComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
