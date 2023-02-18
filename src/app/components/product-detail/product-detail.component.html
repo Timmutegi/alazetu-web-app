@@ -1,17 +1,20 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <div class="product">
+    <div class="text-center my-5" *ngIf="isLoading">
+        <app-loader></app-loader>
+    </div>
+    <div class="product" *ngIf="!isLoading">
         <div class="image">
             <img src="/assets/images/Ngomabook.jpeg" alt="Alazetu logo" />
         </div>
         <div class="details">
             <h3>{{selectedProduct.name}}</h3>
-            <h4>{{selectedProduct.cost | currency:'KES':'code'}}</h4>
+            <h4>{{selectedProduct.price | currency:'KES':'code'}}</h4>
             <p>{{description}}</p>
             <p>Availability: 9 in stock</p>
-            <button class="btn btn-primary action" (click)="addToCart(selectedProduct.id)" *ngIf="!cartItems.includes(selectedProduct.id)">Add to Cart</button>
-            <div class="in-cart" *ngIf="cartItems.includes(selectedProduct.id) && isLoggedIn()">
-                <fa-icon [icon]="faCheck" size="2x" (click)="removeFromCart(selectedProduct.id)"></fa-icon>
+            <button class="btn btn-primary action" (click)="addToCart(selectedProduct._id)" *ngIf="!cartItems.includes(selectedProduct._id)">Add to Cart</button>
+            <div class="in-cart" *ngIf="cartItems.includes(selectedProduct._id) && isLoggedIn()">
+                <fa-icon [icon]="faCheck" size="2x" (click)="removeFromCart(selectedProduct._id)"></fa-icon>
             </div>
         </div>
         <hr>
