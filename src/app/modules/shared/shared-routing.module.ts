@@ -12,6 +12,7 @@ import { ProductDetailComponent } from "src/app/components/product-detail/produc
 import { ShopComponent } from "src/app/components/shop/shop.component";
 import { LoginComponent } from "../authentication/components/login/login.component";
 import { SignUpComponent } from "../authentication/components/sign-up/sign-up.component";
+import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'manage-account', component: ManageAccountComponent, canActivate: [AuthGuard] },
     { path: 'product/:ID', component: ProductDetailComponent },
+    { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
