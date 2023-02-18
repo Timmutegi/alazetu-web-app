@@ -14,14 +14,17 @@
             font-size: 13px;
             border: 2px solid black;
         }
-        input[type="email"],
         input[type="password"],
         input[type="text"],
         input[type="number"] {
             outline: none !important;
             box-shadow: none !important;
         }
-        input[type="email"]:focus,
+        input[type="email"] {
+            color: grey;
+            outline: none !important;
+            box-shadow: none !important;
+        }
         input[type="password"]:focus,
         input[type="number"]:focus,
         input[type="text"]:focus {
