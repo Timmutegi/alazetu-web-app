@@ -3,7 +3,10 @@
     <div class="checkout">
         <div class="col-md-10">
             <h3 class="mb-3">Checkout</h3>
-            <div class="card">
+            <div class="text-center my-5" *ngIf="isLoading">
+                <app-loader></app-loader>
+            </div>
+            <div class="card" *ngIf="!isLoading">
                 <div class="card-body">
                     <h5 class="card-title mb-3">Your Order</h5>
                     <div *ngFor="let product of selectedProducts" class="cart">
@@ -23,12 +26,12 @@
                                             </div>
                                             <div class="col-sm-3 mb-3">
                                                 <h6 class="card-text">
-                                                    {{product.cost | currency:'KES':'code'}} X {{product.quantity}}
+                                                    {{product.price | currency:'KES':'code'}} X {{product.quantity}}
                                                 </h6>
                                             </div>
                                             <div class="col-sm-2 mb-3">
                                                 <h6 class="card-text">
-                                                    {{product.cost * product.quantity | currency:'KES':'code'}}
+                                                    {{product.price * product.quantity | currency:'KES':'code'}}
                                                 </h6>
                                             </div>
                                         </div>
