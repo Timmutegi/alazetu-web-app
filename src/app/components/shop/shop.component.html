@@ -1,19 +1,22 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <div class="row">
+    <div class="text-center my-5" *ngIf="isLoading">
+        <app-loader></app-loader>
+    </div>
+    <div class="row"  *ngIf="!isLoading">
         <div *ngFor="let product of products" class="col-md-4">
             <div class="card mb-4">
                 <img src="/assets/images/Ngomabook.jpeg" alt="Alazetu logo">
                 <div class="card-body">
-                    <a (click)="viewProductDetails(product.id)">
+                    <a (click)="viewProductDetails(product._id)">
                         <h6 class="card-title">{{product.name}}</h6>
                     </a>
-                    <p class="card-text">{{product.cost | currency:'KES':'code'}}</p>
-                    <button class="btn btn-primary" (click)="addToCart(product.id)" *ngIf="!cartItems.includes(product.id)">
+                    <p class="card-text">{{product.price | currency:'KES':'code'}}</p>
+                    <button class="btn btn-primary" (click)="addToCart(product._id)" *ngIf="!cartItems.includes(product._id)">
                         Add to Cart
                     </button>
-                    <div class="in-cart" *ngIf="cartItems.includes(product.id) && isLoggedIn()">
-                        <fa-icon [icon]="faCheck" size="2x" (click)="removeFromCart(product.id)"></fa-icon>
+                    <div class="in-cart" *ngIf="cartItems.includes(product._id) && isLoggedIn()">
+                        <fa-icon [icon]="faCheck" size="2x" (click)="removeFromCart(product._id)"></fa-icon>
                     </div>
                 </div>
             </div>

@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { Product } from 'src/app/shared/product';
+import { Product } from 'src/app/modules/shared/product';
+import { User } from 'src/app/modules/shared/user';
 
 @Component({
   selector: 'app-shop',
@@ -13,73 +15,50 @@ import { Product } from 'src/app/shared/product';
 export class ShopComponent implements OnInit {
   faCheck = faCheck;
   faXMark = faXmark;
-  cartItems: number[]  = [];
-  products: Product[] = [
-    {
-      id: 0,
-      name: "B-flat Ngomabook - Intermediate - 1st Edition",
-      quantity: 2,
-      cost: 1490
-    },
-    {
-      id: 1,
-      name: "E-flat Ngomabook - Intermediate - 1st Edition",
-      quantity: 3,
-      cost: 1490
-    },
-    {
-      id: 2,
-      name: "Guitar Ngomabook - Intermediate - 1st Edition",
-      quantity: 2,
-      cost: 1490
-    },
-    {
-      id: 3,
-      name: "Piano Ngomabook - Intermediate - 1st Edition",
-      quantity: 3,
-      cost: 1490
-    },
-    {
-      id: 4,
-      name: "Violin Ngomabook - Intermediate - 1st Edition",
-      cost: 1490,
-      quantity: 5
-    },
-    {
-      id: 5,
-      name: "Voice (Soprano, Alto) Ngomabook - Intermediate - 1st Edition",
-      cost: 1490,
-      quantity: 6
-    },
-  ];
+  cartItems: string[]  = [];
+  products: Product[] = [];
+  isLoading = true;
 
   constructor(
     private auth: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private api: ApiService
   ) {}
 
   ngOnInit(): void {
+    this.fetchProducts();
     if (this.isLoggedIn()) {
-      this.cartItems = this.auth.fake_user.cart;
+      if (this.auth.user) {
+        this.cartItems = this.auth.user.cartItems;
+      }
     }
   }
 
-  viewProductDetails(id: number): void {
+  fetchProducts() {
+    this.api.get('/products').subscribe(
+      res => {
+        this.products = res;
+        this.isLoading = false;
+      }
+    )
+  }
+
+  viewProductDetails(id: string): void {
     this.router.navigate([`product/${id}`]);
   }
 
-  addToCart(id: number): void {
-    if (!this.auth.fake_user.logged_in) {
+  addToCart(id: string): void {
+    if (!this.auth.user) {
       this.router.navigate(['/login']);
     }
     this.auth.addItemToCart(id);
   }
 
-  isLoggedIn(): boolean {
-    return this.auth.fake_user.logged_in;
+  isLoggedIn(): User | null {
+    return this.auth.user;
   }
 
-  removeFromCart(id: number) {
+  removeFromCart(id: string) {
     this.auth.removeItemFromCart(id);
   }
 }
