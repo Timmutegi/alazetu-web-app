@@ -13,13 +13,13 @@ export class CartItemComponent {
   faMinus = faMinus;
   faTrash = faTrash;
 
-  @Input() id: number = 0;
+  @Input() id: string = '';
   @Input() name: string = '';
-  @Input() cost: number = 0;
+  @Input() price: number = 0;
   @Input() quantity: number = 0;
 
-  @Output() newQuantityEvent = new EventEmitter<{id: number, quantity: number}>();
-  @Output() removeItemEvent = new EventEmitter<{id: number}>();
+  @Output() newQuantityEvent = new EventEmitter<{id: string, quantity: number}>();
+  @Output() removeItemEvent = new EventEmitter<{id: string}>();
 
   plus() {
     this.quantity = this.quantity + 1;
