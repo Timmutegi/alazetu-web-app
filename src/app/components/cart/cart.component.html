@@ -1,10 +1,13 @@
 <app-navbar></app-navbar>
 <div class="container">
     <h3>Shopping Cart</h3>
-    <div class="row">
+    <div class="text-center my-5" *ngIf="isLoading">
+        <app-loader></app-loader>
+    </div>
+    <div class="row" *ngIf="!isLoading">
         <div class="col-md-9 mb-5">
             <div *ngFor="let product of selectedProducts">
-                <app-cart-item [id]="product.id" [name]="product.name" [cost]="product.cost"
+                <app-cart-item [id]="product._id" [name]="product.name" [price]="product.price"
                     [quantity]="product.quantity" (newQuantityEvent)="updateProductQuantity($event)"
                     (removeItemEvent)="removeCartItem($event)">
                 </app-cart-item>

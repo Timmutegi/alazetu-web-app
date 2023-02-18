@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { Product } from 'src/app/shared/product';
+import { Product } from 'src/app/modules/shared/product';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,71 +10,49 @@ import { Product } from 'src/app/shared/product';
 })
 export class CartComponent implements OnInit {
   totalPrice = 0;
-  cartItems: number[]  = [];
+  cartItems: string[]  = [];
   selectedProducts: Product [] = [];
-  products: Product[] = [
-    {
-      id: 0,
-      name: "B-flat Ngomabook - Intermediate - 1st Edition",
-      quantity: 2,
-      cost: 1490
-    },
-    {
-      id: 1,
-      name: "E-flat Ngomabook - Intermediate - 1st Edition",
-      quantity: 3,
-      cost: 1490
-    },
-    {
-      id: 2,
-      name: "Guitar Ngomabook - Intermediate - 1st Edition",
-      quantity: 2,
-      cost: 1490
-    },
-    {
-      id: 3,
-      name: "Piano Ngomabook - Intermediate - 1st Edition",
-      quantity: 3,
-      cost: 1490
-    },
-    {
-      id: 4,
-      name: "Violin Ngomabook - Intermediate - 1st Edition",
-      cost: 1490,
-      quantity: 5
-    },
-    {
-      id: 5,
-      name: "Voice (Soprano, Alto) Ngomabook - Intermediate - 1st Edition",
-      cost: 1490,
-      quantity: 6
-    },
-  ];
+  products: Product[] = [];
+  isLoading = true;
 
   constructor(
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    private api: ApiService
   ) { }
 
   ngOnInit(): void {
-    this.cartItems = this.auth.fake_user.cart;
-    this.selectedProducts = this.products.filter(item => this.cartItems.includes(item.id));
-    this.calculateTotal();
+    this.fetchProducts();
+    if (this.auth.user) {
+      this.cartItems = this.auth.user.cartItems;
+    }
+  }
+
+  fetchProducts() {
+    this.api.get('/products').subscribe(
+      res => {
+        this.products = res;
+        this.isLoading = false;
+        this.selectedProducts = this.products.filter(item => this.cartItems.includes(item._id));
+        this.selectedProducts = this.selectedProducts.map((product) => ({ ...product, quantity: 2 }));
+        this.calculateTotal();
+      }
+    )
   }
 
   updateProductQuantity(data: any) {
-    const target_product = this.selectedProducts.findIndex((product => product.id == data.id));
+    const target_product = this.selectedProducts.findIndex((product => product._id == data.id));
     this.selectedProducts[target_product].quantity = data.quantity;
     this.calculateTotal();
   }
 
   calculateTotal () {
     this.totalPrice = this.selectedProducts.reduce(function (accumulator, item) {
-      return accumulator + item.quantity * item.cost;
+      return accumulator + item.quantity * item.price;
     }, 0);  
   }
 
   removeCartItem(data: any) {
-    this.selectedProducts = this.selectedProducts.filter(product => product.id != data.id);
+    this.selectedProducts = this.selectedProducts.filter(product => product._id != data.id);
     this.calculateTotal();
     this.auth.removeItemFromCart(data.id);
   }
