@@ -44,16 +44,16 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.submitted = true;
+    
     if (this.loginForm.invalid) {
       return;
     }
-
-    this.auth.login_user();
-    this.router.navigate(['/home']);
-
-    this.api.post('/auth', this.loginForm.value).subscribe(
+    
+    this.api.login('/auth', this.loginForm.value).subscribe(
       res => {
-        console.log(res);
+        localStorage.setItem('authToken', res);
+        this.auth.login_user();
+        this.router.navigate(['/home']);
       }
     )
   }
