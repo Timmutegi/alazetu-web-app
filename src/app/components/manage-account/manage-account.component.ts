@@ -50,8 +50,6 @@ export class ManageAccountComponent {
     if (this.profileForm.invalid) {
       return;
     }
-
-    console.log(this.profileForm.value);
   }
 
   resetPassword() {
@@ -60,6 +58,5 @@ export class ManageAccountComponent {
       return;
     }
 
-    console.log(this.resetPasswordForm.value);
   }
 }
