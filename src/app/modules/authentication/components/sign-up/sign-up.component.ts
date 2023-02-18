@@ -51,8 +51,7 @@ export class SignUpComponent implements OnInit {
     this.api.post('/users', this.signupForm.value).subscribe(
       res => {
         if (res.firstName == this.signupForm.value.firstName) {
-          this.auth.login_user();
-          this.router.navigate(['/home']);
+          this.router.navigate(['/login']);
         }
       }
     )
