@@ -48,12 +48,17 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
+    this.isLoading = true;
     
     this.api.login('/auth', this.loginForm.value).subscribe(
       res => {
         localStorage.setItem('authToken', res);
         this.auth.login_user();
+        this.isLoading = false;
         this.router.navigate(['/home']);
+      },
+      err => {
+        this.isLoading = false;
       }
     )
   }
