@@ -47,12 +47,15 @@ export class SignUpComponent implements OnInit {
     if (this.signupForm.invalid) {
       return;
     }
-
+    this.isLoading = true;
     this.api.post('/users', this.signupForm.value).subscribe(
       res => {
         if (res.firstName == this.signupForm.value.firstName) {
           this.router.navigate(['/login']);
         }
+      },
+      err => {
+        this.isLoading = false;
       }
     )
   }
