@@ -17,6 +17,9 @@
                 color: black;
                 font-weight: bold;
             }
+            .nav-link.active {
+                color: #FF3300;
+            }
             .dropdown-menu {
                 border-radius: 0;
                 .dropdown-item {
