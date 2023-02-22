@@ -1,6 +1,7 @@
 .navbar {
     font-family: 'Montserrat', sans-serif;
     background-color: #ffffff !important;
+
     .container {
         .navbar-brand {
             img {
@@ -8,27 +9,40 @@
                 height: 100px;
             }
         }
-        .navbar-nav {
-            font-size: 18px;
-            a:hover {
-                color: #C41230;
-            }
-            .nav-link {
-                color: black;
+
+        .bg-danger {
+            background-color: #ffffff !important;
+            color: #FF3300;
+        }
+
+        .navbar-collapse {
+            flex-grow: 0;
+        }
+
+        fa-icon {
+            margin-right: 10px;
+        }
+
+        font-size: 18px;
+
+        a:hover {
+            color: #C41230;
+        }
+
+        .nav-link {
+            color: black;
+            font-weight: bold;
+        }
+
+        .nav-link.active {
+            color: #FF3300;
+        }
+
+        .dropdown-menu {
+            border-radius: 0;
+
+            .dropdown-item {
                 font-weight: bold;
-            }
-            .nav-link.active {
-                color: #FF3300;
-            }
-            .dropdown-menu {
-                border-radius: 0;
-                .dropdown-item {
-                    font-weight: bold;
-                }
-            }
-            .bg-danger {
-                background-color: #ffffff !important;
-                color: #FF3300;
             }
         }
     }
