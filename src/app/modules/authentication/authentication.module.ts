@@ -5,6 +5,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { SharedRoutingModule } from '../shared/shared-routing.module';
+import { FlashMessagesModule } from 'flash-messages-angular';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SharedRoutingModule } from '../shared/shared-routing.module';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    SharedRoutingModule
+    SharedRoutingModule,
+    FlashMessagesModule
   ]
 })
 export class AuthenticationModule { }
