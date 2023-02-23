@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Product } from 'src/app/modules/shared/product';
 import { ApiService } from 'src/app/services/api.service';
+import { ErrorHandlingService } from 'src/app/services/error-handling.service';
 
 @Component({
   selector: 'app-checkout',
@@ -17,7 +18,8 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private auth: AuthenticationService,
-    private api: ApiService
+    private api: ApiService,
+    private errorHandler: ErrorHandlingService
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +37,10 @@ export class CheckoutComponent implements OnInit {
         this.selectedProducts = this.products.filter(item => this.cartItems.includes(item._id));
         this.selectedProducts = this.selectedProducts.map((product) => ({ ...product, quantity: 2 }));
         this.calculateTotal();
+      },
+      err => {
+        this.isLoading = false;
+        this.errorHandler.handleError(err);
       }
     )
   }

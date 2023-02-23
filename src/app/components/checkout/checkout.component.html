@@ -6,6 +6,9 @@
             <div class="text-center my-5" *ngIf="isLoading">
                 <app-loader></app-loader>
             </div>
+            <div class="flash">
+                <flash-messages></flash-messages>
+            </div>
             <div class="card" *ngIf="!isLoading">
                 <div class="card-body">
                     <h5 class="card-title mb-3">Your Order</h5>
