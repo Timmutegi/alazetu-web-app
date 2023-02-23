@@ -5,6 +5,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ErrorHandlingService } from 'src/app/services/error-handling.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -22,7 +23,8 @@ export class SignUpComponent implements OnInit {
   constructor( 
     private api: ApiService,
     private auth: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private errorHandler: ErrorHandlingService
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +58,7 @@ export class SignUpComponent implements OnInit {
       },
       err => {
         this.isLoading = false;
+        this.errorHandler.handleError(err);
       }
     )
   }

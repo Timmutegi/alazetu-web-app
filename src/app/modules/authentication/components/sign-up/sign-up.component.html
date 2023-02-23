@@ -7,6 +7,13 @@
         <div class="sign-up col">
             <form [formGroup]="signupForm">
                 <div class="form-row">
+                    <div class="form-row">
+                        <div class="flash form-group">
+                            <flash-messages></flash-messages>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
                     <div class="form-group mb-3">
                         <label for="firstname">Firstname</label>
                         <input type="text" class="form-control" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors}" autofocus>
