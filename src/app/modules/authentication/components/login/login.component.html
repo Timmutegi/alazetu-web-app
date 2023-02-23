@@ -4,8 +4,15 @@
         <div class="logo col">
             <img src="/assets/images/Alazetu.jpg" alt="Alazetu logo"/>
         </div>
-        <div class="sign-up col">
+        <div class="col">
             <form [formGroup]="loginForm">
+                <div class="form-row">
+                    <div class="form-row">
+                        <div class="flash form-group">
+                            <flash-messages></flash-messages>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-row">
                     <div class="form-group mb-4">
                         <label for="email">Email</label>
@@ -48,5 +55,4 @@
             </form>
         </div>
     </div>
-
 </div>

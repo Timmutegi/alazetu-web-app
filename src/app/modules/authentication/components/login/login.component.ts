@@ -6,6 +6,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ErrorHandlingService } from 'src/app/services/error-handling.service';
 
 @Component({
   selector: 'app-login',
@@ -20,11 +21,13 @@ export class LoginComponent implements OnInit {
   faRightToBracket = faRightToBracket;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
+  errorMessage: string = '';
 
   constructor(
     private router: Router,
     private auth: AuthenticationService,
-    private api: ApiService
+    private api: ApiService,
+    private errorHandler: ErrorHandlingService
   ) { }
 
   ngOnInit(): void {
@@ -59,6 +62,7 @@ export class LoginComponent implements OnInit {
       },
       err => {
         this.isLoading = false;
+        this.errorHandler.handleError(err);
       }
     )
   }
