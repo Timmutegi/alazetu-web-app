@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Product } from 'src/app/modules/shared/product';
 import { User } from 'src/app/modules/shared/user';
+import { ErrorHandlingService } from 'src/app/services/error-handling.service';
 
 @Component({
   selector: 'app-shop',
@@ -22,7 +23,8 @@ export class ShopComponent implements OnInit {
   constructor(
     private auth: AuthenticationService,
     private router: Router,
-    private api: ApiService
+    private api: ApiService,
+    private errorHandler: ErrorHandlingService
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +41,10 @@ export class ShopComponent implements OnInit {
       res => {
         this.products = res;
         this.isLoading = false;
+      },
+      err => {
+        this.isLoading = false;
+        this.errorHandler.handleError(err);
       }
     )
   }

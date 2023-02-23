@@ -3,6 +3,9 @@
     <div class="text-center my-5" *ngIf="isLoading">
         <app-loader></app-loader>
     </div>
+    <div class="flash">
+        <flash-messages></flash-messages>
+    </div>
     <div class="row"  *ngIf="!isLoading">
         <div *ngFor="let product of products" class="col-md-4">
             <div class="card mb-4">
